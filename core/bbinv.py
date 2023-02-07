@@ -84,6 +84,7 @@ class BBinv:
 
     def mainloop(self) -> None:
         while True:
+            found = False
             c.cls()
             print("0 - Kilepes")
             print("Adja meg a cikk osszetett kodjat: ")
@@ -94,6 +95,7 @@ class BBinv:
             else:
                 for item in self.items:
                     if item.torzs + item.cikkszam == userCh:
+                        found = True
                         c.cls()
                         print(f"{item.name}\n{item.torzs} {item.cikkszam}\n{item.quantity} {item.mertek}")
                         try:
@@ -116,5 +118,8 @@ class BBinv:
                         else:
                             input("Nincs ilyen opcio...\nNyomj ENTER-t a folytatashotz!")
                             break
+            if not found:
+                c.cls()
+                input("Nem talalhato ilyen cikk\nNyomj ENTER-t a folytatashoz...")
         print('EXITING APPLICATION...')
         return None
